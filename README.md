@@ -1,5 +1,5 @@
 # BACKEND BASE
-## Start Point to backend Rest API system builded with PHP and Laravel Framework 
+## Start Point to backend Rest API system builded with PHP (7.4+) and Laravel Framework (9.48.0)
 
 ### Features
 
