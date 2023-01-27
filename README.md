@@ -29,5 +29,20 @@ php artisan serve
 ```
 7. Run the auth/login request in your client. This request need basic authentication with headers **username**: "_admin@backend.com_" and **password**: "_admin01_"
 8. Get the token returned in response and add into other requests as header Bearer Token
+9. By default a user must have the following attributes:
+```json
+{
+  "name": "John Doe",
+  "email": "johndoe@backend.com",
+  "password": "johndoe123",
+  "profile": "Collaborator",
+  "status": "Active"
+}
+```
+- Profile and status attributes are optional
+- The password is needed only in store requests, but is optional in updates
+- By default, the profile attribute can be: "Administrator" (default) or "Collaborator". The status need to be "Active" or "Inactive". This can be configured in _lang/en/auth.php_ file.
+- Only Administrators can manage users
+- A logged user cannot remove your own user
 
 Enjoy.

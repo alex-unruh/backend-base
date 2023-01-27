@@ -30,7 +30,7 @@ class UsersController extends Controller
         $data = $request->validated();
         $user = new User($data);
         $user->save();
-        return response(['message' => __('Record successfully added')]);
+        return response(['message' => __('Record added successfully')]);
     }
 
     /**
@@ -41,7 +41,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return User::find($id);
+        return User::findOrFail($id);
     }
 
     /**
@@ -53,12 +53,12 @@ class UsersController extends Controller
      */
     public function update(UsersRequest $request, $id)
     {
+        $user = User::findOrFail($id);
         $data = $request->validated();
-        $user = User::find($id);
         $user->fill($data);
         $user->save();
 
-        return response(['message' => __('Record successfully updated')]);
+        return response(['message' => __('Record updated successfully')]);
     }
 
     /**
@@ -69,8 +69,10 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        if (auth()->id() === $user->id) return response(__("You can't remove your aown user"));
+        $user = User::findOrFail($id);
+        if (auth()->id() === $user->id) return response(['message' => __("You can't remove your aown user")], 403);
         $user->delete();
+
+        return response(['message' => __('Record deleted successfully')]);
     }
 }

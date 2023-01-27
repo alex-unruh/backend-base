@@ -20,6 +20,9 @@ class AuthController extends Controller
      */
     public function login(Request $request): Response
     {
+        if ($request->user()->status === 'Inactive') {
+            return response(['message' => 'Unauthorized'], 403);
+        }
         $token = $request->user()->createToken('app');
         $response = [
             'message' => __('Successfull authenticated'),
