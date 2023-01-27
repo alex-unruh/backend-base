@@ -44,5 +44,6 @@ php artisan serve
 - By default, the profile attribute can be: "Administrator" (default) or "Collaborator". The status need to be "Active" or "Inactive". This can be configured in _lang/en/auth.php_ file.
 - Only Administrators can manage users
 - A logged user cannot remove your own user
+- An Inactive user cannot login
 
 Enjoy.
