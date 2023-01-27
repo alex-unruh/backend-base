@@ -13,17 +13,21 @@
 ### How to configure
 
 1. Clone this repository
-2. Configure database connection in .env file
-3. Run: 
+2. To install dependecies run:
+```
+composer install
+```
+3. Configure database connection in .env file
+4. Run: 
 ```
 php artisan migrate
 ```
-4. Import thunder-collection.json file in Thunder Client extension (VSCode) or Postman
-5. To start server, run:
+5. Import thunder-collection.json file in Thunder Client extension (VSCode) or Postman
+6. To start server, run:
 ```
 php artisan serve
 ```
-6. Run the auth/login request in your client. This request need basic authentication with headers **username**: "_admin@backend.com_" and **password**: "_admin01_"
-7. Get the token returned in response and add into other requests as header Bearer Token
+7. Run the auth/login request in your client. This request need basic authentication with headers **username**: "_admin@backend.com_" and **password**: "_admin01_"
+8. Get the token returned in response and add into other requests as header Bearer Token
 
 Enjoy.
