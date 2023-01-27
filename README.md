@@ -24,6 +24,6 @@ php artisan migrate
 php artisan serve
 ```
 6. Run the auth/login request in your client. This request need basic authentication with headers **username**: "_admin@backend.com_" and **password**: "_admin01_"
-7. Get the tone returned in response and add into other requests as header Bearer Token
+7. Get the token returned in response and add into other requests as header Bearer Token
 
 Enjoy.
