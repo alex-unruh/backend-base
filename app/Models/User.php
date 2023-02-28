@@ -22,7 +22,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'status',
         'profile',
     ];
 
@@ -71,18 +70,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Change profile index to label
-     *
-     * @param string $profile_label
-     * @return void
-     */
-    public function setStatusAttribute(string $status_label): void
-    {
-        $status = __('auth.status');
-        $this->attributes['status'] = array_search($status_label, $status);
-    }
-
-    /**
      * Change status boolean to label
      *
      * @param int $profile_index
@@ -92,17 +79,5 @@ class User extends Authenticatable
     {
         $profiles = __('auth.profiles');
         return $profiles[$profile_index];
-    }
-
-    /**
-     * Change status label to boolean
-     *
-     * @param int $profile_index
-     * @return string
-     */
-    public function getStatusAttribute(int $status_index): string
-    {
-        $status = __('auth.status');
-        return $status[$status_index];
     }
 }

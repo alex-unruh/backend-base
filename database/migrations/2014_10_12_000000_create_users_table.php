@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->unsignedTinyInteger('profile')->default(1);
-            $table->boolean('status')->default(true);
             $table->timestamps();
         });
 

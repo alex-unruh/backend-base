@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -28,7 +28,6 @@ class UsersRequest extends FormRequest
             'name' => ['required', 'string', 'between:4,255'],
             'email' => ['required', 'email', Rule::unique('users')->ignore($this->id)],
             'password' => [Rule::requiredIf(!$this->id), 'string', 'between:6,255'],
-            'status' => ['sometimes', Rule::in(__('auth.status'))],
             'profile' => ['sometimes', Rule::in(__('auth.profiles'))]
         ];
     }

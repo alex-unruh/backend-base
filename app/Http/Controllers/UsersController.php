@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\UsersRequest;
+use App\Http\Requests\UsersRequest;
 
 class UsersController extends Controller
 {
@@ -16,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return response(User::all());
     }
 
     /**
@@ -30,7 +29,7 @@ class UsersController extends Controller
         $data = $request->validated();
         $user = new User($data);
         $user->save();
-        return response(['message' => __('Record added successfully')]);
+        return response(['message' => __('msg.created')]);
     }
 
     /**
@@ -41,7 +40,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        return User::findOrFail($id);
+        return response(User::findOrFail($id));
     }
 
     /**
@@ -58,7 +57,7 @@ class UsersController extends Controller
         $user->fill($data);
         $user->save();
 
-        return response(['message' => __('Record updated successfully')]);
+        return response(['message' => __('msg.updated')]);
     }
 
     /**
@@ -70,9 +69,9 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        if (auth()->id() === $user->id) return response(['message' => __("You can't remove your aown user")], 403);
+        if (auth()->id() === $user->id) return response(['message' => __("msg.self_delete")], 403);
         $user->delete();
 
-        return response(['message' => __('Record deleted successfully')]);
+        return response(['message' => __('msg.deleted')]);
     }
 }

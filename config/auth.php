@@ -109,7 +109,7 @@ return [
     'password_timeout' => 10800,
 
     /**
-     * Initial user to insert in database
+     * Initial user to insert into the database
      */
     'initial_user' => [
         'name' => 'Admin',

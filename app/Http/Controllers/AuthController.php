@@ -12,47 +12,69 @@ class AuthController extends Controller
 {
 
     /**
-     * Undocumented function
+     * Authenticates user with basic auth
      *
      * @param Request $request
-     * @param boolean $is_admin
      * @return Response
      */
     public function login(Request $request): Response
     {
-        if ($request->user()->status === 'Inactive') {
-            return response(['message' => 'Unauthorized'], 403);
-        }
-        $token = $request->user()->createToken('app');
-        $response = [
-            'message' => __('Successfull authenticated'),
-            'token' => $token->plainTextToken,
-            'expires_in_minutes' => config('sanctum.expiration')
-        ];
-
+        $response = $this->makeResponse($request);
         return response($response);
     }
 
     /**
-     * Undocumented function
+     * Delete the actual user token
      *
-     * @return void
+     * @param Request $request
+     * @return Response
      */
-    public function logout(Request $request)
+    public function logout(Request $request): Response
     {
         $request->user()->currentAccessToken()->delete();
-        return response(["message" => "Logout realizado com sucesso"]);
+        return response(["message" => __('msg.logout')]);
     }
 
     /**
-     * Undocumented function
+     * Delete all user tokens
      *
      * @param Request $request
-     * @return void
+     * @return Response
      */
-    public function fullLogout(Request $request)
+    public function fullLogout(Request $request): Response
     {
         $request->user()->tokens()->delete();
-        return response(["message" => "Logout realizado com sucesso"]);
+        return response(["message" => __('msg.logout')]);
+    }
+
+    /**
+     * Refresh the actual token
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function refreshToken(Request $request): Response
+    {
+        $response = $this->makeResponse($request);
+        return response($response);
+    }
+
+    /**
+     * Make the same response to login and refreshToken methods
+     *
+     * @param Request $request
+     * @return array
+     */
+    private function makeResponse(Request $request): array
+    {
+        $token = $request->user()->createToken('app');
+        $response = [
+            'message' => __('msg.login'),
+            'token' => $token->plainTextToken,
+            'expires_in_minutes' => config('sanctum.expiration'),
+            'user' => $request->user()
+        ];
+
+        return $response;
     }
 }

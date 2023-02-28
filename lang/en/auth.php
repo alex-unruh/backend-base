@@ -18,5 +18,4 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
     'profiles' => [1 => 'Administrator', 2 => 'Collaborator'],
-    'status' => [0 => 'Inactive', 1 => 'Active']
 ];
