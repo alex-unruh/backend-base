@@ -35,15 +35,13 @@ php artisan serve
   "name": "John Doe",
   "email": "johndoe@backend.com",
   "password": "johndoe123",
-  "profile": "Collaborator",
-  "status": "Active"
+  "profile": "Collaborator"
 }
 ```
-- Profile and status attributes are optional
+- Profile attribute is optional
 - The password is needed only in store requests, but is optional in updates
-- By default, the profile attribute can be: "Administrator" (default) or "Collaborator". The status need to be "Active" or "Inactive". This can be configured in _lang/en/auth.php_ file.
+- By default, the profile attribute can be: "Administrator" (default) or "Collaborator". This can be configured in _lang/en/auth.php_ file.
 - Only Administrators can manage users
 - A logged user cannot remove your own user
-- An Inactive user cannot login
 
 Enjoy.
