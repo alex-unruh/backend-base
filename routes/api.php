@@ -12,7 +12,7 @@ use App\Http\Controllers\UsersController;
 
 Route::post('/login', [AuthController::class, 'login'])->middleware('auth.basic');
 
-Route::middleware('auth:sanctum')->group(function () {
+//Route::middleware('auth:sanctum')->group(function () {
 
     // Auth routes
     Route::post('/refresh-token', [AuthController::class, 'refreshToken']);
@@ -23,11 +23,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('users')->group(function () {
         Route::controller(UsersController::class)->group(function () {
             Route::get('/', 'index');
-            Route::get('/{id}/show', 'show');
-            Route::post('/store', 'store');
-            Route::post('/{id}/update', 'update');
-            Route::post('/{id}/delete', 'destroy');
+            Route::get('/{id}', 'show');
+            Route::post('/', 'store');
+            Route::patch('/{id}', 'update');
+            Route::delete('/{id}', 'destroy');
         })->middleware('can:manage-users');;
     });
 
-});
+//});

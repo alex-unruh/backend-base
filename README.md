@@ -1,12 +1,12 @@
 # BACKEND BASE
-## Start Point to backend Rest API system builded with PHP (7.4+) and Laravel Framework (9.48.0)
+## Start Point to backend Rest API system builded with PHP (8.2+) and Laravel Framework (11)
 
 ### Features
 
 - Rest API's only. It has no visual interface
 - Complete CRUD with form request validation for users 
 - First user record automatically created during migration
-- Thunder Client Collection available in root
+- Postman Collection available in root
 - Basic authentication configured to route api/login (to get token)
 - Sanctum authentication configured for all other routes (with bearer token)
 
